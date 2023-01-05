@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-const Nevigation = () => {
-  return <NevigationStyled>일이 쇼핑</NevigationStyled>;
+const Navigation = () => {
+  return <NavigationStyled>일이 쇼핑</NavigationStyled>;
 };
 
-const NevigationStyled = styled.div`
+const NavigationStyled = styled.div`
   width: fit-content;
   font-weight: 700;
   font-size: 18px;
@@ -13,4 +13,4 @@ const NevigationStyled = styled.div`
   color: black;
 `;
 
-export default Nevigation;
+export default Navigation;

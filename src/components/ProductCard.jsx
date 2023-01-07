@@ -11,6 +11,7 @@ const ProductCard = ({ Name, Description, Thumnail }) => {
 };
 const ProductCardStyled = styled.div`
   padding: 20px 24px;
+  white-space: pre-line;
 `;
 
 const NameStyled = styled.div`

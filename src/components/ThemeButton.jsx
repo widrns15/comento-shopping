@@ -13,6 +13,7 @@ const ThemeButtonStyled = styled.div`
   line-height: 26px;
   padding: 24px 16px;
   color: white;
+  cursor: pointer;
 `;
 
 export default ThemeButton;

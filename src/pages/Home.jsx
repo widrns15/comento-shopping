@@ -2,9 +2,20 @@ import Navigation from "../components/Navigation";
 import ThemeButton from "../components/ThemeButton";
 import ProductCard from "../components/ProductCard";
 import styled from "styled-components";
-import { mockTheme1Produdcts } from "../data/mockData";
+import { mockTheme1Produdcts, mockTheme2Produdcts } from "../data/mockData";
+import { useState } from "react";
 
 const Home = () => {
+  const [products, setProducts] = useState();
+
+  // 테마 버튼 클릭 Event
+  const onClickThemeButton = (themeId) => {
+    if (themeId === 1) {
+      setProducts(mockTheme1Produdcts);
+    } else if (themeId === 2) {
+      setProducts(mockTheme2Produdcts);
+    }
+  };
   return (
     <MainSection>
       <div>
@@ -13,23 +24,33 @@ const Home = () => {
           <Topbar />
         </div>
         <ThemeSection>
-          <ThemeButton ThemeName={"#따순 머그컵"} />
-          <ThemeButton ThemeName={"#겨울 필수템"} />
+          <ThemeButton
+            ThemeName={"#따순 머그컵"}
+            onClick={() => onClickThemeButton(1)}
+          />
+          <ThemeButton
+            ThemeName={"#겨울 필수템"}
+            onClick={() => onClickThemeButton(2)}
+          />
         </ThemeSection>
         <GrayLine />
       </div>
 
       <ProductCards>
         {/* mockData list를 화면에 노출하자 - map 문법 */}
-        {mockTheme1Produdcts.map((product) => (
-          <ProductCard
-            // props와 map 함수 원소 구분을 위해 대소문자 사용했음
-            key={product.id}
-            Name={product.name}
-            Description={product.description}
-            Thumnail={product.thumbnail}
-          />
-        ))}
+        {/* 삼향연산자 */}
+        {products ? (
+          products.map((product) => (
+            <ProductCard
+              key={product.id}
+              Name={product.name}
+              Description={product.description}
+              Thumnail={product.thumbnail}
+            />
+          ))
+        ) : (
+          <div>---------------------- 테마 선택 ----------------------</div>
+        )}
       </ProductCards>
     </MainSection>
   );

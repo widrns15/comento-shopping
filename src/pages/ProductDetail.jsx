@@ -4,32 +4,40 @@ import InProduct from "../components/InProduct";
 import styled from "styled-components";
 import BasketButton from "../components/BasketButton";
 import ProductDetailView from "../components/ProductDetailView";
+import { useParams } from "react-router-dom";
+import { getProductDetail } from "../data/mockData";
+import { useEffect, useState } from "react";
 
 const ProductDetail = () => {
+  // URL에서 paramter 변수(productId) 받아오는 로직
+  let { productId } = useParams();
+  const [product, setProduct] = useState();
+
+  useEffect(() => {
+    const result = getProductDetail(productId);
+    setProduct(result);
+  }, [productId]);
+
   return (
     <MainSection>
-      <div>
-        <Icon />
-        <Navigation />
+      <Icon />
+      <Navigation />
+      {product && (
         <div>
           <InProduct
-            Name="비숑 블랙 머그잔"
-            Description="21,800원"
-            Thumnail="https://raw.githubusercontent.com/congchu/coment-shop-server/master/assets/images/product1.jpg"
+            Name={product.name}
+            Description={product.price}
+            Thumnail={product.thumbnail}
           />
-        </div>
-      </div>
 
-      <div>
-        <ProductTab />
-        <ProductDetailView
-          detailImg={
-            "https://raw.githubusercontent.com/congchu/coment-shop-server/master/assets/images/product1_detail.jpeg"
-          }
-          name={"비숑 블랙 머그잔"}
-        />
-        <BasketButton>장바구니 담기</BasketButton>
-      </div>
+          <ProductTab />
+          <ProductDetailView
+            detailImg={product.mainImage}
+            name={product.name}
+          />
+          <BasketButton>장바구니 담기</BasketButton>
+        </div>
+      )}
     </MainSection>
   );
 };
@@ -52,6 +60,8 @@ const MainSection = styled.div`
   width: 390px;
   height: 1554px;
   background: #ffffff;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export default ProductDetail;

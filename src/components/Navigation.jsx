@@ -11,6 +11,8 @@ const NavigationStyled = styled.div`
   line-height: 26px;
   padding: 20px 151px;
   color: black;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export default Navigation;

@@ -86,6 +86,7 @@ const ThemeSection = styled.div`
   display: flex;
   gap: 12px;
   padding: 40px 24px;
+  padding-left: 50px;
 `;
 
 const Topbar = styled.div`

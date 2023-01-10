@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-const ProductCard = ({ Name, Description, Thumnail }) => {
+const ProductCard = ({ Name, Description, Thumbnail }) => {
   return (
     <ProductCardStyled>
-      <img width={341} src={Thumnail} alt={Name} />
-      <NameStyled>{Name}</NameStyled>
-      <DescriptionStyled>{Description}</DescriptionStyled>
+      <ProductThumbnail style={{ backgroundImage: `url(${Thumbnail})` }} />
+      <ProductName>{Name}</ProductName>
+      <ProductDesc>{Description}</ProductDesc>
     </ProductCardStyled>
   );
 };
@@ -13,8 +13,14 @@ const ProductCardStyled = styled.div`
   padding: 20px 24px;
   white-space: pre-line;
 `;
+const ProductThumbnail = styled.div`
+  width: 100%;
+  height: 204px;
+  background-size: cover;
+  background-position: center;
+`;
 
-const NameStyled = styled.div`
+const ProductName = styled.div`
   width: fit-content;
   font-weight: 700;
   font-size: 20px;
@@ -23,7 +29,7 @@ const NameStyled = styled.div`
   color: black;
 `;
 
-const DescriptionStyled = styled.div`
+const ProductDesc = styled.div`
   width: fit-content;
   font-weight: 400;
   font-size: 16px;

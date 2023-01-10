@@ -12,6 +12,7 @@ const ProductCard = ({ Name, Description, Thumbnail, OnClick }) => {
 const ProductCardStyled = styled.div`
   padding: 20px 24px;
   white-space: pre-line;
+  cursor: pointer;
 `;
 const ProductThumbnail = styled.div`
   width: 100%;

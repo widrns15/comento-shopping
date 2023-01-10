@@ -4,11 +4,13 @@ import ProductCard from "../components/ProductCard";
 import styled from "styled-components";
 import { mockTheme1Produdcts, mockTheme2Produdcts } from "../data/mockData";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   // state(상태) - 변화가 있을 때 모션동작
   // 다시 렌더링(UI를 불러오는) 되는 조건 값
   const [products, setProducts] = useState(0);
+  const navigate = useNavigate();
 
   // 조건에 의해서 실행되는 함수
   useEffect(() => {
@@ -56,6 +58,7 @@ const Home = () => {
               Name={product.name}
               Description={product.description}
               Thumbnail={product.thumbnail}
+              OnClick={() => navigate(`product/${product.id}`)}
             />
           ))
         ) : (

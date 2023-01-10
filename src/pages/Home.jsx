@@ -41,7 +41,7 @@ const Home = () => {
             onClick={() => onClickThemeButton(1)}
           />
           <ThemeButton
-            ThemeName={"#겨울 필수템"}
+            ThemeName={"#여름 필수템"}
             onClick={() => onClickThemeButton(2)}
           />
         </ThemeSection>
@@ -79,6 +79,8 @@ const MainSection = styled.div`
   width: 390px;
   height: 1322px;
   background: #ffffff;
+  margin-left: auto;
+  margin-right: auto;
 `;
 const ThemeSection = styled.div`
   display: flex;

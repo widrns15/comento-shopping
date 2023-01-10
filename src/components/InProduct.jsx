@@ -6,7 +6,7 @@ const InProduct = ({ Name, Description, Thumnail }) => {
       <img width={390} src={Thumnail} alt={Name} />
       <Section>
         <NameStyled>{Name}</NameStyled>
-        <DescriptionStyled>{Description}</DescriptionStyled>
+        <DescriptionStyled>{Description}원</DescriptionStyled>
       </Section>
     </div>
   );

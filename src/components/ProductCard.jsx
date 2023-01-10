@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-const ProductCard = ({ Name, Description, Thumbnail }) => {
+const ProductCard = ({ Name, Description, Thumbnail, OnClick }) => {
   return (
-    <ProductCardStyled>
+    <ProductCardStyled onClick={OnClick}>
       <ProductThumbnail style={{ backgroundImage: `url(${Thumbnail})` }} />
       <ProductName>{Name}</ProductName>
       <ProductDesc>{Description}</ProductDesc>

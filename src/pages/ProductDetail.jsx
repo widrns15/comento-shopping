@@ -1,6 +1,7 @@
 import Navigation from "../components/Navigation";
 import ProductTab from "../components/ProductTab";
 import InProduct from "../components/InProduct";
+import BackButton from "../components/BackButton";
 import styled from "styled-components";
 import BasketButton from "../components/BasketButton";
 import ProductDetailView from "../components/ProductDetailView";
@@ -20,7 +21,7 @@ const ProductDetail = () => {
 
   return (
     <MainSection>
-      <Icon />
+      <BackButton />
       <Navigation />
       {product && (
         <div>
@@ -41,19 +42,6 @@ const ProductDetail = () => {
     </MainSection>
   );
 };
-
-const Icon = styled.div`
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  left: 33px;
-  top: 25px;
-
-  border-left: 2px solid black;
-  border-top: 2px solid black;
-
-  transform: rotate(-45deg);
-`;
 
 const MainSection = styled.div`
   position: relative;

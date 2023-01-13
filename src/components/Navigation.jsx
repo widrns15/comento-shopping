@@ -1,7 +1,11 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Navigation = () => {
-  return <NavigationStyled>일이 쇼핑</NavigationStyled>;
+  const navigate = useNavigate();
+  return (
+    <NavigationStyled onClick={() => navigate("/")}>일이 쇼핑</NavigationStyled>
+  );
 };
 
 const NavigationStyled = styled.div`
@@ -13,6 +17,7 @@ const NavigationStyled = styled.div`
   color: black;
   margin-left: auto;
   margin-right: auto;
+  cursor: pointer;
 `;
 
 export default Navigation;

@@ -4,7 +4,7 @@ const ProductDetailView = ({ detailImg, name, tab }) => {
   return (
     <ProductDetailViewTemplate>
       {tab === 0 ? (
-        <ProductDetailImg src={detailImg} name={name + " 상품 설명"} />
+        <ProductDetailImg src={detailImg} alt={`${name} 상품 설명`} />
       ) : (
         <div>상품 후기입니당.</div>
       )}

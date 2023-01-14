@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const BackButton = () => {
   const navigate = useNavigate();
-  return <BackButtonStyled onClick={() => navigate(2)}></BackButtonStyled>;
+  return <BackButtonStyled onClick={() => navigate(-1)}></BackButtonStyled>;
 };
 
 const BackButtonStyled = styled.div`

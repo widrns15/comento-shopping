@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
-const ProductDetailView = ({ detailImg, name }) => {
+const ProductDetailView = ({ detailImg, name, tab }) => {
   return (
     <ProductDetailViewTemplate>
-      {/* TODO: 메뉴 버튼 선택에 따라 보여지는 화면 다르게 하기 */}
-      <ProductDetailImg src={detailImg} name={name + " 상품 설명"} />
+      {tab === 0 ? (
+        <ProductDetailImg src={detailImg} name={name + " 상품 설명"} />
+      ) : (
+        <div>상품 후기입니당.</div>
+      )}
     </ProductDetailViewTemplate>
   );
 };

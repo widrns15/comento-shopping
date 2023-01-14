@@ -10,9 +10,17 @@ import { getProductDetail } from "../data/mockData";
 import { useEffect, useState } from "react";
 
 const ProductDetail = () => {
-  // URL에서 paramter 변수(productId) 받아오는 로직
   let { productId } = useParams();
   const [product, setProduct] = useState();
+  const [tab, setTab] = useState(0);
+
+  const handleClickTabs = (tab) => {
+    if (tab === 0) {
+      setTab(0);
+    } else {
+      setTab(1);
+    }
+  };
 
   useEffect(() => {
     const result = getProductDetail(productId);
@@ -31,10 +39,17 @@ const ProductDetail = () => {
             Thumnail={product.thumbnail}
           />
 
-          <ProductTab />
+          <ProductTab
+            firstTab={"상품 설명"}
+            secondTab={"상품 후기"}
+            tab={tab}
+            onClick={handleClickTabs}
+          />
+
           <ProductDetailView
             detailImg={product.mainImage}
             name={product.name}
+            tab={tab}
           />
           <BasketButton>장바구니 담기</BasketButton>
         </div>

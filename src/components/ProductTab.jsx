@@ -1,10 +1,14 @@
 import styled from "styled-components";
 
-const ProductTab = () => {
+const ProductTab = ({ firstTab, secondTab, tab, onClick }) => {
   return (
     <DetailMenuButtonTemplate>
-      <MenuButton position={"left"}>상품 설명</MenuButton>
-      <MenuButton position={"right"}>상품 후기</MenuButton>
+      <MenuButton click={tab === 0} onClick={() => onClick(0)}>
+        {firstTab}
+      </MenuButton>
+      <MenuButton click={tab === 1} onClick={() => onClick(1)}>
+        {secondTab}
+      </MenuButton>
     </DetailMenuButtonTemplate>
   );
 };
@@ -24,10 +28,9 @@ const MenuButton = styled.button`
   height: 48px;
 
   /* FIXME: 위치 기준이 아닌 버튼의 선택 유무에 따라 스타일 적용 */
-  background-color: ${(props) =>
-    props.position === "left" ? "#eeeeee" : "#ffffff"};
+  background-color: ${(props) => (props.click ? "#eeeeee" : "#ffffff")};
 
-  font-weight: ${(props) => (props.position === "left" ? "bold" : "normal")};
+  font-weight: ${(props) => (props.click ? "bold" : "normal")};
   font-size: 16px;
   font-family: "Noto Sans KR";
 

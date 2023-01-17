@@ -1,12 +1,13 @@
 import styled from "styled-components";
+import Review from "./Review";
 
 const ProductDetailView = ({ detailImg, name, tab }) => {
   return (
-    <ProductDetailViewTemplate>
+    <ProductDetailViewTemplate tab={tab}>
       {tab === 0 ? (
         <ProductDetailImg src={detailImg} alt={`${name} 상품 설명`} />
       ) : (
-        <div>상품 후기입니당.</div>
+        <Review />
       )}
     </ProductDetailViewTemplate>
   );
@@ -14,7 +15,7 @@ const ProductDetailView = ({ detailImg, name, tab }) => {
 
 const ProductDetailViewTemplate = styled.div`
   width: 100%;
-  height: 825px;
+  height: ${(props) => (props.tab === 0 ? "825px" : "380px")};
   overflow-y: scroll;
   &::-webkit-scrollbar {
     display: none;

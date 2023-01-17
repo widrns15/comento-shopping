@@ -6,8 +6,9 @@ import styled from "styled-components";
 import BasketButton from "../components/BasketButton";
 import ProductDetailView from "../components/ProductDetailView";
 import { useParams } from "react-router-dom";
-import { getProductDetail } from "../data/mockData";
+import { getProductDetail, mockReviews } from "../data/mockData";
 import { useEffect, useState } from "react";
+import Review from "../components/Review";
 
 const ProductDetail = () => {
   let { productId } = useParams();
@@ -45,12 +46,30 @@ const ProductDetail = () => {
             tab={tab}
             onClick={handleClickTabs}
           />
+          {tab === 0 && (
+            <ProductDetailView
+              detailImg={product.mainImage}
+              name={product.name}
+              tab={tab}
+            />
+          )}
 
-          <ProductDetailView
-            detailImg={product.mainImage}
-            name={product.name}
-            tab={tab}
-          />
+          {tab === 1 && (
+            <div>
+              {mockReviews.map((product) => (
+                <Review
+                  key={product.id}
+                  username={product.username}
+                  profileImage={product.profileImage}
+                  score={product.score}
+                  createdDate={product.createdDate}
+                  reviewText={product.reviewText}
+                  tab={tab}
+                />
+              ))}
+            </div>
+          )}
+
           <BasketButton>장바구니 담기</BasketButton>
         </div>
       )}

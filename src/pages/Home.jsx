@@ -32,7 +32,7 @@ const Home = () => {
     <MainSection>
       <div>
         <div>
-          <Navigation />
+          <Navigation header={"일이 쇼핑"} />
           <Topbar />
         </div>
         <ThemeSection>

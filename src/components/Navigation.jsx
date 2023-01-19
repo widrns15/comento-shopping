@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-const Navigation = () => {
+const Navigation = ({ header }) => {
   const navigate = useNavigate();
   return (
-    <NavigationStyled onClick={() => navigate("/")}>일이 쇼핑</NavigationStyled>
+    <NavigationStyled onClick={() => navigate("/")}>{header}</NavigationStyled>
   );
 };
 

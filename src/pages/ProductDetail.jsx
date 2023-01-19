@@ -31,7 +31,7 @@ const ProductDetail = () => {
   return (
     <MainSection>
       <BackButton />
-      <Navigation />
+      <Navigation header={"일이 쇼핑"} />
       {product && (
         <div>
           <InProduct

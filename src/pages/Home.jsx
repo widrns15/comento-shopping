@@ -2,6 +2,7 @@ import Navigation from "../components/Navigation";
 import ThemeButton from "../components/ThemeButton";
 import ProductCard from "../components/ProductCard";
 import styled from "styled-components";
+import Bar from "../components/Bar";
 import { mockTheme1Produdcts, mockTheme2Produdcts } from "../data/mockData";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -33,7 +34,7 @@ const Home = () => {
       <div>
         <div>
           <Navigation header={"일이 쇼핑"} />
-          <Topbar />
+          <Bar height={1} />
         </div>
         <ThemeSection>
           <ThemeButton
@@ -45,7 +46,7 @@ const Home = () => {
             onClick={() => onClickThemeButton(2)}
           />
         </ThemeSection>
-        <GrayLine />
+        <Bar height={8} />
       </div>
 
       <ProductCards>
@@ -87,17 +88,6 @@ const ThemeSection = styled.div`
   gap: 12px;
   padding: 40px 24px;
   padding-left: 50px;
-`;
-
-const Topbar = styled.div`
-  height: 1px;
-  width: 100%;
-  background: #eeeeee;
-`;
-const GrayLine = styled.div`
-  height: 8px;
-  width: 100%;
-  background: #eeeeee;
 `;
 
 export default Home;

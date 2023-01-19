@@ -4,7 +4,7 @@ import InProduct from "../components/InProduct";
 import BackButton from "../components/BackButton";
 import styled from "styled-components";
 import ProductDetailView from "../components/ProductDetailView";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getProductDetail, mockReviews } from "../data/mockData";
 import { useEffect, useState } from "react";
 
@@ -14,6 +14,7 @@ const ProductDetail = () => {
   let { productId } = useParams();
   const [product, setProduct] = useState();
   const [tab, setTab] = useState(0);
+  const navigate = useNavigate();
 
   const handleClickTabs = (tab) => {
     if (tab === 0) {
@@ -27,6 +28,12 @@ const ProductDetail = () => {
     const result = getProductDetail(productId);
     setProduct(result);
   }, [productId]);
+
+  const onClickAddBasketButton = () => {
+    // 장바구니 아이템을 담는다
+    // 장바구니 페이지로 이동한다.
+    navigate("/basket");
+  };
 
   return (
     <MainSection>
@@ -70,7 +77,9 @@ const ProductDetail = () => {
             </div>
           )}
 
-          <AddBasketButton>장바구니 담기</AddBasketButton>
+          <AddBasketButton onClick={onClickAddBasketButton}>
+            장바구니 담기
+          </AddBasketButton>
         </div>
       )}
     </MainSection>

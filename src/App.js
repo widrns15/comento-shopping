@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product/:productId" element={<ProductDetail />} />
-        <Route path="/Basket" element={<Basket />} />
+        <Route path="/basket" element={<Basket />} />
       </Routes>
     </HashRouter>
   );

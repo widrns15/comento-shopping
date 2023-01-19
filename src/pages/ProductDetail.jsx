@@ -7,15 +7,14 @@ import ProductDetailView from "../components/ProductDetailView";
 import { useParams, useNavigate } from "react-router-dom";
 import { getProductDetail, mockReviews } from "../data/mockData";
 import { useEffect, useState } from "react";
-
 import Review from "../components/Review";
+import * as storage from "../utils/storage";
 
 const ProductDetail = () => {
   let { productId } = useParams();
   const [product, setProduct] = useState();
   const [tab, setTab] = useState(0);
   const navigate = useNavigate();
-
   const handleClickTabs = (tab) => {
     if (tab === 0) {
       setTab(0);
@@ -23,7 +22,6 @@ const ProductDetail = () => {
       setTab(1);
     }
   };
-
   useEffect(() => {
     const result = getProductDetail(productId);
     setProduct(result);
@@ -31,10 +29,10 @@ const ProductDetail = () => {
 
   const onClickAddBasketButton = () => {
     // 장바구니 아이템을 담는다
+    storage.addBasket(product);
     // 장바구니 페이지로 이동한다.
     navigate("/basket");
   };
-
   return (
     <MainSection>
       <BackButton />
@@ -46,7 +44,6 @@ const ProductDetail = () => {
             Description={product.price}
             Thumnail={product.thumbnail}
           />
-
           <ProductTab
             firstTab={"상품 설명"}
             secondTab={"상품 후기"}
@@ -60,7 +57,6 @@ const ProductDetail = () => {
               tab={tab}
             />
           )}
-
           {tab === 1 && (
             <div>
               {mockReviews.map((product) => (
@@ -76,7 +72,6 @@ const ProductDetail = () => {
               ))}
             </div>
           )}
-
           <AddBasketButton onClick={onClickAddBasketButton}>
             장바구니 담기
           </AddBasketButton>
@@ -85,7 +80,6 @@ const ProductDetail = () => {
     </MainSection>
   );
 };
-
 const MainSection = styled.div`
   position: relative;
   width: 390px;
@@ -94,7 +88,6 @@ const MainSection = styled.div`
   margin-left: auto;
   margin-right: auto;
 `;
-
 const AddBasketButton = styled.button`
   width: 100%;
   height: 70px;
@@ -105,5 +98,4 @@ const AddBasketButton = styled.button`
   border: none;
   cursor: pointer;
 `;
-
 export default ProductDetail;

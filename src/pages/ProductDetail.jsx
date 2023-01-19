@@ -3,11 +3,11 @@ import ProductTab from "../components/ProductTab";
 import InProduct from "../components/InProduct";
 import BackButton from "../components/BackButton";
 import styled from "styled-components";
-import BasketButton from "../components/BasketButton";
 import ProductDetailView from "../components/ProductDetailView";
 import { useParams } from "react-router-dom";
 import { getProductDetail, mockReviews } from "../data/mockData";
 import { useEffect, useState } from "react";
+
 import Review from "../components/Review";
 
 const ProductDetail = () => {
@@ -70,7 +70,7 @@ const ProductDetail = () => {
             </div>
           )}
 
-          <BasketButton>장바구니 담기</BasketButton>
+          <AddBasketButton>장바구니 담기</AddBasketButton>
         </div>
       )}
     </MainSection>
@@ -84,6 +84,17 @@ const MainSection = styled.div`
   background: #ffffff;
   margin-left: auto;
   margin-right: auto;
+`;
+
+const AddBasketButton = styled.button`
+  width: 100%;
+  height: 70px;
+  font-family: "Noto Sans KR";
+  font-weight: bold;
+  text-align: center;
+  background-color: #24dbaf;
+  border: none;
+  cursor: pointer;
 `;
 
 export default ProductDetail;

@@ -4,33 +4,41 @@ import BackButton from "../components/BackButton";
 import Bar from "../components/Bar";
 import * as storage from "../utils/storage";
 import BasketItem from "../components/BasketItem";
+import PriceDetailView from "../components/PriceDetailView";
 import { useEffect, useState } from "react";
 
 const Basket = () => {
   const [basketItems, setBasketItems] = useState();
-  const [basketItemCount, setbasketItemCount] = useState(0);
+  const [basketItemCount, setBasketItemCount] = useState(0);
+  const [basketItemPrice, setBasketItemPrice] = useState(0);
 
   //  1. 장바구니 데이터 가져오기.
 
   useEffect(() => {
     const items = storage.getBasketItems();
     setBasketItems(items);
-    setbasketItemCount(items.length);
+    setBasketItemCount(items.length);
   }, []);
 
   // 3. itemCount가 바뀔 때마다 실행하는 함수
 
   useEffect(() => {
     const items = storage.getBasketItems();
+    const totalPrice = items
+      .map((item) => item.price)
+      .reduce((acc, val) => acc + val, 0);
     setBasketItems(items);
+    setBasketItemPrice(totalPrice);
   }, [basketItemCount]);
 
   //  2. UI 구현
 
   const onClickRemoveButton = (productId) => {
     storage.removeBasketItem(productId);
-    setbasketItemCount(basketItemCount - 1);
+    setBasketItemCount(basketItemCount - 1);
   };
+
+  const deliveryFee = 3000;
 
   return (
     <MainSection>
@@ -48,7 +56,12 @@ const Basket = () => {
           />
         ))}
       <Bar height={1} />
-      <div>상품 금액 ({basketItemCount}개)</div>
+      <PriceDetailView
+        count={basketItemCount}
+        price={basketItemPrice}
+        deliveryFee={deliveryFee}
+        totalPrice={basketItemPrice + deliveryFee}
+      />
       <OrderBasketButton>주문하기</OrderBasketButton>
     </MainSection>
   );

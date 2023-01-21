@@ -11,7 +11,6 @@ const ProductCard = ({ Name, Description, Thumbnail, OnClick }) => {
 };
 const ProductCardStyled = styled.div`
   padding: 20px 24px;
-  white-space: pre-line;
   cursor: pointer;
 `;
 const ProductThumbnail = styled.div`
@@ -37,6 +36,7 @@ const ProductDesc = styled.div`
   line-height: 21px;
   letter-spacing: -0.01em;
   color: black;
+  white-space: pre-line;
 `;
 
 export default ProductCard;

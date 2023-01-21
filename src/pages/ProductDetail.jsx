@@ -83,7 +83,7 @@ const ProductDetail = () => {
 const MainSection = styled.div`
   position: relative;
   width: 390px;
-  height: 1554px;
+  height: 100%;
   background: #ffffff;
   margin-left: auto;
   margin-right: auto;

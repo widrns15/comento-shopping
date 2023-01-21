@@ -37,6 +37,7 @@ const ColumnLayout = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  white-space: pre-line;
 `;
 
 const ProductImage = styled.div`
@@ -47,6 +48,7 @@ const ProductImage = styled.div`
 `;
 const CloseButton = styled.div`
   cursor: pointer;
+  margin-right: 50px;
 `;
 
 const ProductName = styled.div`

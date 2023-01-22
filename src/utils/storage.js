@@ -32,3 +32,10 @@ export const removeBasketItem = (productId) => {
   //  다시 상품 리스트 저장하기
   localStorage.setItem(BASKET, JSON.stringify(items));
 };
+
+export const removeBasketItemAll = (productId) => {
+  let items = getBasketItems();
+  items = items.filter((item) => item.id === productId);
+  localStorage.removeItem(BASKET);
+  localStorage.setItem(BASKET, JSON.stringify(items));
+};

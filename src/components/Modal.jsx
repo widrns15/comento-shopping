@@ -1,12 +1,32 @@
 import styled from "styled-components";
 
-const Modal = ({ onCloseModal }) => {
+const Modal = ({
+  modalText,
+  onClickOrder,
+  onClickCancle,
+  onModalClose,
+  hasCancle,
+}) => {
   return (
     <>
       <ModalOverlay />
       <StyledModal>
-        <h3>주문 완료 :P</h3>
-        <button onClick={onCloseModal}>확인</button>
+        {hasCancle ? (
+          <>
+            <h3> {modalText}</h3>
+            <ButtonSection>
+              <button onClick={onClickOrder}>결제</button>
+              <button onClick={onClickCancle}>취소</button>
+            </ButtonSection>
+          </>
+        ) : (
+          <div>
+            <h3>{modalText}</h3>
+            <ButtonFooter>
+              <button onClick={onModalClose}>확인</button>
+            </ButtonFooter>
+          </div>
+        )}
       </StyledModal>
     </>
   );
@@ -35,7 +55,8 @@ const StyledModal = styled.div`
     margin-bottom: 30px;
   }
   button {
-    width: 120px;
+    flex-direction: row;
+    width: 60px;
     height: 40px;
     font-family: "Noto Sans KR";
     font-size: 16px;
@@ -46,12 +67,22 @@ const StyledModal = styled.div`
   }
 `;
 
+const ButtonSection = styled.div`
+  display: flex;
+  gap: 10px;
+`;
+
+const ButtonFooter = styled.div`
+  margin-left: 18px;
+`;
+
 const ModalOverlay = styled.div`
   width: 390px;
-  height: 873px;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 50%;
+
   transform: translate(-50%, 0);
   background-color: rgba(0, 0, 0, 0.22);
   z-index: 999;

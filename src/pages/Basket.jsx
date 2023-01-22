@@ -14,6 +14,7 @@ const Basket = () => {
   const [basketItemCount, setBasketItemCount] = useState(0);
   const [basketItemPrice, setBasketItemPrice] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [orderModal, setOrderModal] = useState(false);
   const navigate = useNavigate();
 
   //  1. 장바구니 데이터 가져오기.
@@ -48,10 +49,22 @@ const Basket = () => {
     setIsModalOpen(true);
   };
 
-  const handleModalButtonClick = () => {
+  const handleModalCancle = () => {
+    //취소
     setIsModalOpen(false);
-    storage.removeBasketItemAll();
-    navigate("/");
+  };
+
+  const handleModalOrder = () => {
+    // 주문
+    if (isModalOpen) {
+      setOrderModal(true);
+    } // 확인
+    if (orderModal) {
+      setIsModalOpen(false);
+      setOrderModal(false);
+      storage.removeBasketItemAll();
+      navigate("/");
+    }
   };
 
   return (
@@ -79,7 +92,19 @@ const Basket = () => {
       <OrderBasketButton onClick={handleOrderButtonClick}>
         주문하기
       </OrderBasketButton>
-      {isModalOpen && <Modal onCloseModal={handleModalButtonClick} />}
+
+      {isModalOpen && (
+        <Modal
+          modalText={"주문 할까요?"}
+          onClickOrder={handleModalOrder}
+          onClickCancle={handleModalCancle}
+          hasCancle={true}
+        />
+      )}
+
+      {orderModal && (
+        <Modal modalText={"주문 완료 :P"} onModalClose={handleModalOrder} />
+      )}
     </MainSection>
   );
 };

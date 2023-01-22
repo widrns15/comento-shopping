@@ -6,11 +6,15 @@ import * as storage from "../utils/storage";
 import BasketItem from "../components/BasketItem";
 import PriceDetailView from "../components/PriceDetailView";
 import { useEffect, useState } from "react";
+import Modal from "../components/Modal";
+import { useNavigate } from "react-router-dom";
 
 const Basket = () => {
   const [basketItems, setBasketItems] = useState();
   const [basketItemCount, setBasketItemCount] = useState(0);
   const [basketItemPrice, setBasketItemPrice] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   //  1. 장바구니 데이터 가져오기.
 
@@ -40,6 +44,16 @@ const Basket = () => {
 
   const deliveryFee = 3000;
 
+  const handleOrderButtonClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalButtonClick = () => {
+    setIsModalOpen(false);
+    storage.removeBasketItemAll();
+    navigate("/");
+  };
+
   return (
     <MainSection>
       <BackButton />
@@ -62,7 +76,10 @@ const Basket = () => {
         deliveryFee={deliveryFee}
         totalPrice={basketItemPrice + deliveryFee}
       />
-      <OrderBasketButton>주문하기</OrderBasketButton>
+      <OrderBasketButton onClick={handleOrderButtonClick}>
+        주문하기
+      </OrderBasketButton>
+      {isModalOpen && <Modal onCloseModal={handleModalButtonClick} />}
     </MainSection>
   );
 };

@@ -3,6 +3,7 @@ import ThemeButton from "../components/ThemeButton";
 import ProductCard from "../components/ProductCard";
 import styled from "styled-components";
 import Bar from "../components/Bar";
+import Skeleton from "../components/Skeleton";
 import { mockTheme1Produdcts, mockTheme2Produdcts } from "../data/mockData";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -63,7 +64,11 @@ const Home = () => {
             />
           ))
         ) : (
-          <div>---------------------- 테마 선택 ----------------------</div>
+          <>
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+          </>
         )}
       </ProductCards>
     </MainSection>
